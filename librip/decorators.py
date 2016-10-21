@@ -35,3 +35,21 @@
 # test_4
 # 1
 # 2
+
+def print_result(func):
+    def decorated_func(*args):
+        print(func.__name__)
+        res = func(*args)
+        if type(res) is list:
+            print('\n'.join(str(i) for i in res))
+            # for i in res:
+            #     print (i, sep = '\n')
+        elif type(res) is dict:
+            # for i in res:
+            #     print (i, res[i], sep = ' = ')
+            print('\n'.join(str(i) + '=' + str(res[i]) for i in res))
+
+        else:
+            print(res)
+        return (res)
+    return decorated_func
